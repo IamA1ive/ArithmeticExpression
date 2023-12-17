@@ -18,6 +18,7 @@ public:
 	bool IsNumber(char i);
 	int GetPriority(double i);
 	double Calc();
+	void Braces();
 	void Input();
 	void Output();
 };

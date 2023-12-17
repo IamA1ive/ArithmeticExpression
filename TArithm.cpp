@@ -51,17 +51,21 @@ string TArithm::Postfix() {
 	if (left_brace != right_brace) {
 		mist_braces++;
 	}
+	if (left_brace + right_brace > 0) {
+		Braces();
+	}
 	return Postfix;
 }
 bool TArithm::IsNumber(char i) {
 	return ((i == '1') || (i == '2') || (i == '3') || (i == '4') || (i == '5') || (i == '6') || (i == '7') || (i == '8') || (i == '9') || (i == '0'));
 }
 int TArithm::GetPriority(double i) {
+	int p = 0;
 	if (i == '+' || i == '-')
-		return 1;
+		p = 1;
 	else if (i == '*' || i == '/')
-		return 2;
-	return 0;
+		p = 2;
+	return p;
 }
 double TArithm::Calc() {
 	TStack Stack;
@@ -114,10 +118,32 @@ void TArithm::Output() {
 			cout << "Ошибка: деление на ноль" << endl;
 		}
 		if (mist_imbalance > 0) {
-			cout << "Ошибка: количество операций не соответствует количеству операндов" << endl;
+			cout << "Ошибка: количество операций не соответствует количеству операндов (операции = операнды - 1)" << endl;
 		}
 		if (mist_braces > 0) {
 			cout << "Ошибка: количество левых скобок не соответствует количеству правых скобок" << endl;
 		}
+	}
+}
+void TArithm::Braces() {
+	cout << "\t(\t\t\t)" << endl;
+	double counter = 0;
+	TStack Stack;
+	for (char i: infix) {
+		if (i == '(') {
+			Stack.Put(++counter);
+		}
+		else if (i == ')') {
+			counter++;
+			if (!Stack.Empty()) {
+				cout << "\t" << Stack.Get() << "\t\t\t" << counter << endl;
+			}
+			else {
+				cout << "\t" << 0 << "\t\t\t" << counter << endl;
+			}
+		}
+	}
+	while (!Stack.Empty()) {
+		cout << "\t" << Stack.Get() << "\t\t\t" << 0 << endl;
 	}
 }

@@ -19,7 +19,7 @@ double TStack::Get() {
 	if (!Empty()) {
 		res = arr[top--];
 	}
-	else cout << "Ошибка: стек пуст!" << endl;
+	//else cout << "Ошибка: стек пуст!" << endl;
 	return res;
 }
 double TStack::Top() {
@@ -27,7 +27,7 @@ double TStack::Top() {
 	if (!Empty()) {
 		res = arr[top];
 	}
-	else cout << "Ошибка: стек пуст!" << endl;
+	//else cout << "Ошибка: стек пуст!" << endl;
 	return res;
 }
 bool TStack::Empty() {

@@ -9,7 +9,7 @@ int main() {
 	setlocale(LC_ALL, "Rus");
 
 
-	TArithm A1("5+5/(9-9))");
+	TArithm A1("");
 	A1.Output();
 
 
