@@ -22,9 +22,21 @@ double TStack::Get() {
 	else cout << "Ошибка: стек пуст!" << endl;
 	return res;
 }
+double TStack::Top() {
+	double res = 0;
+	if (!Empty()) {
+		res = arr[top];
+	}
+	else cout << "Ошибка: стек пуст!" << endl;
+	return res;
+}
 bool TStack::Empty() {
 	return (top == -1);
 }
 bool TStack::Full() {
 	return (top == MAX - 1);
 }
+
+
+
+

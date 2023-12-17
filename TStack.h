@@ -10,4 +10,6 @@ public:
 	double Get();
 	bool Empty();
 	bool Full();
+	double Top();
 };
+

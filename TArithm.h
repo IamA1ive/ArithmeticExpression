@@ -5,12 +5,19 @@ using namespace std;
 
 
 class TArithm {
-	string expr;
-	int mist;
+	string infix;
+	string postfix;
+	double res;
+	int mist_null;
+	int mist_imbalance;
+	int mist_braces;
 public:
 	TArithm(string str);
 	~TArithm();
-	TStack Postfix();
+	string Postfix();
 	bool IsNumber(char i);
-	double CharToDouble(char i);
+	int GetPriority(double i);
+	double Calc();
+	void Input();
+	void Output();
 };
