@@ -9,8 +9,11 @@ int main() {
 	setlocale(LC_ALL, "Rus");
 
 
-	TArithm A1("");
-	A1.Output();
+
+
+	TArithm A6("1+2*(3+4-(5-2)*3+2)");
+	A6.Output();
+
 
 
 

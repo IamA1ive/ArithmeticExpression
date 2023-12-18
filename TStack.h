@@ -12,4 +12,3 @@ public:
 	bool Full();
 	double Top();
 };
-

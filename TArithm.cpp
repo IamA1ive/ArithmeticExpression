@@ -108,9 +108,9 @@ void TArithm::Input() {
 	res = Calc();
 }
 void TArithm::Output() {
+	cout << "Выражение: " << infix << endl;
+	cout << "Постфиксная форма: " << postfix << endl;
 	if ((mist_braces + mist_imbalance + mist_null) == 0) {
-		cout << "Выражение: " << infix << endl;
-		cout << "Постфиксная форма: " << postfix << endl;
 		cout << "Результат: " << res << endl;
 	}
 	else {
@@ -121,15 +121,16 @@ void TArithm::Output() {
 			cout << "Ошибка: количество операций не соответствует количеству операндов (операции = операнды - 1)" << endl;
 		}
 		if (mist_braces > 0) {
-			cout << "Ошибка: количество левых скобок не соответствует количеству правых скобок" << endl;
+			cout << "Ошибка: количество левых скобок не соответствует количеству правых скобок или скобки расположены неверно" << endl;
 		}
 	}
+	cout << endl << endl;
 }
 void TArithm::Braces() {
 	cout << "\t(\t\t\t)" << endl;
 	double counter = 0;
 	TStack Stack;
-	for (char i: infix) {
+	for (char i : infix) {
 		if (i == '(') {
 			Stack.Put(++counter);
 		}
@@ -140,10 +141,14 @@ void TArithm::Braces() {
 			}
 			else {
 				cout << "\t" << 0 << "\t\t\t" << counter << endl;
+				mist_braces++;
 			}
 		}
 	}
 	while (!Stack.Empty()) {
 		cout << "\t" << Stack.Get() << "\t\t\t" << 0 << endl;
+		mist_braces++;
 	}
 }
+
+

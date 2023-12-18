@@ -36,7 +36,3 @@ bool TStack::Empty() {
 bool TStack::Full() {
 	return (top == MAX - 1);
 }
-
-
-
-
